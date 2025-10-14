@@ -105,3 +105,89 @@ body {
         opacity: 1; 
     }
 }
+
+/* Estilos para sidebar colapsable */
+.sidebar {
+    width: 64px; /* Ancho colapsado (solo iconos) */
+    min-width: 64px;
+}
+
+.sidebar.expanded {
+    width: 256px; /* Ancho expandido (w-64 en Tailwind) */
+}
+
+/* Transición suave para enlaces */
+.nav-link {
+    min-height: 48px; /* Altura fija para consistencia */
+}
+
+.nav-text {
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.sidebar.expanded .nav-text {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Logo texto en colapsado */
+#logo-text {
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.sidebar.expanded #logo-text {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Ajuste para el enlace activo */
+.nav-link.active {
+    background-color: #dbeafe;
+    border-right-color: #2563eb;
+    border-right-width: 2px;
+    color: #2563eb;
+}
+
+/* Responsive: En móviles, mantener expandido si es necesario */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 256px; /* Siempre expandido en pantallas medianas/pequeñas */
+    }
+    .sidebar.expanded {
+        width: 256px;
+    }
+}/* Estado activo (resaltado) */
+.nav-link.active {
+    background-color: #dbeafe !important;
+    color: #2563eb !important;
+    border-right: 2px solid #2563eb !important;
+}
+/* Ajuste dinámico del main content (para que no se superponga al bloque blanco) */
+#reports-content {
+    margin-left: 64px !important; /* Colapsado por defecto */
+    transition: margin-left 0.3s ease-in-out !important; /* Anima el shift */
+}
+#sidebar-reports:hover ~ .main-content #reports-content,
+#sidebar-reports:hover #reports-content {
+    margin-left: 256px !important; /* Expande margen en hover */
+}
+/* Responsive: En pantallas pequeñas, fuerza expandido */
+@media (max-width: 1024px) {
+    #sidebar-reports {
+        width: 256px !important;
+    }
+    #reports-content {
+        margin-left: 0 !important; /* Full-width en mobile */
+    }
+    .nav-text, #logo-text-reports {
+        opacity: 1 !important;
+        transform: translateX(0) !important;
+    }
+    .nav-link {
+        justify-content: flex-start !important;
+    }
+}
