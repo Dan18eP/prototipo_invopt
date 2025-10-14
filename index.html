@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invopt - Gestión Inteligente de Inventario</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="h-full overflow-hidden">
+    <div class="relative w-full h-full">
+        <!-- Pantalla 1: Enhanced Login -->
+        <div id="login" class="screen active warehouse-bg">
+            <!-- Floating particles animation -->
+            <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                <div class="absolute top-20 left-10 w-2 h-2 bg-blue-400 rounded-full opacity-60 animate-bounce" style="animation-delay: 0s;"></div>
+                <div class="absolute top-40 right-20 w-3 h-3 bg-green-400 rounded-full opacity-50 animate-bounce" style="animation-delay: 1s;"></div>
+                <div class="absolute bottom-32 left-20 w-2 h-2 bg-orange-400 rounded-full opacity-70 animate-bounce" style="animation-delay: 2s;"></div>
+                <div class="absolute top-60 left-1/3 w-1 h-1 bg-blue-300 rounded-full opacity-80 animate-bounce" style="animation-delay: 0.5s;"></div>
+                <div class="absolute bottom-20 right-1/4 w-2 h-2 bg-green-300 rounded-full opacity-60 animate-bounce" style="animation-delay: 1.5s;"></div>
+            </div>
+
+            <!-- Top navigation bar -->
+            <div class="absolute top-0 left-0 right-0 bg-white bg-opacity-10 backdrop-blur-sm border-b border-white border-opacity-20">
+                <div class="flex justify-between items-center px-8 py-4">
+                    <div class="flex items-center space-x-6">
+                        <span class="text-white font-medium hover:text-blue-200 cursor-pointer transition-colors">Producto</span>
+                        <span class="text-white font-medium hover:text-blue-200 cursor-pointer transition-colors">Soluciones</span>
+                        <span class="text-white font-medium hover:text-blue-200 cursor-pointer transition-colors">Precios</span>
+                        <span class="text-white font-medium hover:text-blue-200 cursor-pointer transition-colors">Recursos</span>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <button class="text-white hover:text-blue-200 transition-colors">Soporte</button>
+                        <button class="px-4 py-2 border border-white border-opacity-30 text-white rounded-lg hover:bg-white hover:bg-opacity-10 transition-all">
+                            Contacto
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main content -->
+            <div class="flex items-center justify-center min-h-full p-8 pt-24">
+                <!-- Left side - Features showcase -->
+                <div class="hidden lg:flex flex-col space-y-8 mr-16 max-w-md slide-in-left">
+                    <div class="text-white">
+                        <h2 class="text-4xl font-bold mb-4">Bienvenido a Invopt</h2>
+                        <p class="text-xl text-blue-100 mb-8">La plataforma líder en gestión inteligente de inventarios</p>
+                    </div>
+                    
+                    <!-- Feature cards -->
+                    <div class="space-y-4">
+                        <div class="flex items-center p-4 bg-white bg-opacity-10 backdrop-blur-sm rounded-xl border border-white border-opacity-20 hover:bg-opacity-20 transition-all cursor-pointer">
+                            <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mr-4 floating">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold">Predicción IA</h3>
+                                <p class="text-blue-100 text-sm">Anticipa la demanda con 92% de precisión</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-4 bg-white bg-opacity-10 backdrop-blur-sm rounded-xl border border-white border-opacity-20 hover:bg-opacity-20 transition-all cursor-pointer">
+                            <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mr-4 floating" style="animation-delay: 0.5s;">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold">Automatización</h3>
+                                <p class="text-blue-100 text-sm">Reduce errores manuales en 67%</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-4 bg-white bg-opacity-10 backdrop-blur-sm rounded-xl border border-white border-opacity-20 hover:bg-opacity-20 transition-all cursor-pointer">
+                            <div class="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center mr-4 floating" style="animation-delay: 1s;">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold">Ahorro Garantizado</h3>
+                                <p class="text-blue-100 text-sm">Hasta $24,500 mensuales en costos</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-4 pt-4">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-white">500+</div>
+                            <div class="text-blue-200 text-sm">Empresas</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-white">99.9%</div>
+                            <div class="text-blue-200 text-sm">Uptime</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-white">24/7</div>
+                            <div class="text-blue-200 text-sm">Soporte</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Login form -->
+                <div class="card rounded-2xl p-8 w-full max-w-md shadow-2xl fade-in-up">
+                    <!-- Enhanced Logo -->
+                    <div class="text-center mb-8">
+                        <div class="inline-flex items-center justify-center mb-6">
+                            <!-- Invopt Logo SVG -->
+                            <svg class="w-20 h-20 floating" viewBox="0 0 120 120" fill="none">
+                                <!-- Background circle -->
+                                <circle cx="60" cy="60" r="58" fill="url(#logoGradient)" stroke="#e5e7eb" stroke-width="2"/>
+                                
+                                <!-- Main icon - stylized inventory boxes with AI elements -->
+                                <g transform="translate(30, 30)">
+                                    <!-- Base boxes -->
+                                    <rect x="10" y="35" width="15" height="15" fill="#ffffff" rx="2" opacity="0.9"/>
+                                    <rect x="30" y="30" width="15" height="20" fill="#ffffff" rx="2" opacity="0.8"/>
+                                    <rect x="50" y="25" width="15" height="25" fill="#ffffff" rx="2" opacity="0.9"/>
+                                    
+                                    <!-- AI connection lines -->
+                                    <path d="M17 20 Q30 15 37 20 Q45 15 57 20" stroke="#10b981" stroke-width="2" fill="none" opacity="0.8"/>
+                                    <circle cx="17" cy="20" r="2" fill="#10b981"/>
+                                    <circle cx="37" cy="20" r="2" fill="#3b82f6"/>
+                                    <circle cx="57" cy="20" r="2" fill="#f59e0b"/>
+                                    
+                                    <!-- Optimization arrows -->
+                                    <path d="M20 10 L25 15 L20 20 M25 15 L35 15" stroke="#3b82f6" stroke-width="2" fill="none"/>
+                                    <path d="M45 10 L50 15 L45 20 M50 15 L60 15" stroke="#10b981" stroke-width="2" fill="none"/>
+                                </g>
+                                
+                                <!-- Gradient definition -->
+                                <defs>
+                                    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+                                        <stop offset="50%" style="stop-color:#1d4ed8;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#1e40af;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <h1 class="text-4xl font-bold text-gray-800 mb-2">
+                            <span class="text-blue-600">Inv</span><span class="text-gray-800">opt</span>
+                        </h1>
+                        <p class="text-gray-600 text-lg">Gestión Inteligente de Inventario</p>
+                        <p class="text-gray-500 text-sm mt-2">Automatiza tu inventario con inteligencia artificial</p>
+                    </div>
+                    
+                    <!-- Login form -->
+                    <form onsubmit="event.preventDefault(); showScreen('dashboard');" class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <span class="flex items-center">
+                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                    </svg>
+                                    Usuario
+                                </span>
+                            </label>
+                            <input type="text" value="laura.martinez" placeholder="Ingresa tu usuario"
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <span class="flex items-center">
+                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                                    </svg>
+                                    Contraseña
+                                </span>
+                            </label>
+                            <input type="password" placeholder="Ingresa tu contraseña"
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white">
+                        </div>
+                        
+                        <!-- Remember me and forgot password -->
+                        <div class="flex items-center justify-between">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                <span class="ml-2 text-sm text-gray-600">Recordarme</span>
+                            </label>
+                            <a href="#" class="text-sm text-blue-600 hover:text-blue-800">¿Olvidaste tu contraseña?</a>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg">
+                            <span class="flex items-center justify-center">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M10 17l5-5-5-5v10z"/>
+                                </svg>
+                                Iniciar Sesión
+                            </span>
+                        </button>
+                        
+                        <!-- Divider -->
+                        <div class="relative my-6">
+                            <div class="absolute inset-0 flex items-center">
+                                <div class="w-full border-t border-gray-300"></div>
+                            </div>
+                            <div class="relative flex justify-center text-sm">
+                                <span class="px-2 bg-white text-gray-500">o continúa con</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Social login buttons -->
+                        <div class="grid grid-cols-2 gap-3">
+                            <button type="button" class="flex items-center justify-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                                <svg class="w-5 h-5 text-blue-600" viewBox="0 0 24 24">
+                                    <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                    <path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                    <path fill="currentColor" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                                    <path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                                </svg>
+                                <span class="ml-2 text-sm font-medium text-gray-700">Google</span>
+                            </button>
+                            <button type="button" class="flex items-center justify-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                                <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                </svg>
+                                <span class="ml-2 text-sm font-medium text-gray-700">Facebook</span>
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <!-- Footer -->
+                    <div class="mt-8 text-center">
+                        <p class="text-sm text-gray-600">
+                            ¿No tienes cuenta? 
+                            <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">Regístrate gratis</a>
+                        </p>
+                        <div class="mt-4 flex items-center justify-center space-x-4 text-xs text-gray-500">
+                            <a href="#" class="hover:text-gray-700">Términos</a>
+                            <span>•</span>
+                            <a href="#" class="hover:text-gray-700">Privacidad</a>
+                            <span>•</span>
+                            <a href="#" class="hover:text-gray-700">Ayuda</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom testimonial -->
+            <div class="absolute bottom-8 left-8 right-8">
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-4 border border-white border-opacity-20 max-w-2xl mx-auto">
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-green-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                            LM
+                        </div>
+                        <div>
+                            <p class="text-white text-sm italic">"Invopt transformó completamente nuestra gestión de inventario. Ahorramos $30,000 el primer mes."</p>
+                            <p class="text-blue-200 text-xs mt-1">- Laura Martínez, Gerente de Almacén en TechCorp</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla 2: Dashboard Mejorado -->
+        <div id="dashboard" class="screen bg-gray-50">
+            <div class="flex h-full">
+                <!-- Sidebar -->
+                <div class="w-64 bg-white shadow-lg">
+                    <div class="p-6">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                                </svg>
+                            </div>
+                            <span class="ml-3 text-xl font-bold text-gray-800">Invopt</span>
+                        </div>
+                    </div>
+                    <nav class="mt-6">
+                        <a onclick="showScreen('dashboard')" class="flex items-center px-6 py-3 text-blue-600 bg-blue-50 border-r-2 border-blue-600 cursor-pointer">
+                            <span class="mr-3">🏠</span>
+                            Dashboard
+                        </a>
+                        <a onclick="showScreen('products')" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="mr-3">📦</span>
+                            Inventario
+                        </a>
+                        <a onclick="showScreen('predictions')" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="mr-3">📈</span>
+                            Predicciones
+                        </a>
+                        <a onclick="showScreen('alerts')" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="mr-3">🔔</span>
+                            Alertas
+                        </a>
+                        <a onclick="showScreen('reports')" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="mr-3">📊</span>
+                            Reportes
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Main Content -->
+                <div class="flex-1 p-8">
+                    <!-- Header con información contextual -->
+                    <div class="mb-8 flex justify-between items-start">
+                        <div>
+                            <h1 class="text-3xl font-bold text-gray-800">Hola, Laura</h1>
+                            <p class="text-gray-600">Gerente de Almacén • TechCorp Solutions</p>
+                            <div class="flex items-center mt-2 text-sm text-gray-500">
+                                <span class="mr-4">📅 Lunes, 18 Marzo 2024</span>
+                                <span class="mr-4">🕐 14:32</span>
+                                <span class="flex items-center">
+                                    <div class="w-2 h-2 bg-green-500 rounded-full mr-1"></div>
+                                    Sistema operativo
+                                </span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="bg-gradient-to-r from-blue-500 to-green-500 text-white px-4 py-2 rounded-lg text-sm font-medium">
+                                💰 Ahorro del mes: $24,500
+                            </div>
+                            <p class="text-xs text-gray-500 mt-1">+15% vs mes anterior</p>
+                        </div>
+                    </div>
+
+                    <!-- Métricas principales -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                        <!-- Valor Total del Inventario -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-blue-500">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-600">Valor Total</p>
+                                    <p class="text-2xl font-bold text-gray-900">$2.4M</p>
+                                    <p class="text-xs text-green-600 flex items-center mt-1">
+                                        ↗️ +5.2% vs mes anterior
+                                    </p>
+                                </div>
+                                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                    <span class="text-2xl">💎</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Rotación de Inventario -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-green-500">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-600">Rotación</p>
+                                    <p class="text-2xl font-bold text-gray-900">6.8x</p>
+                                    <p class="text-xs text-green-600 flex items-center mt-1">
+                                        ↗️ Óptima
+                                    </p>
+                                </div>
+                                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                                    <span class="text-2xl">🔄</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tiempo de Reabastecimiento -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-orange-500">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-600">Tiempo Promedio</p>
+                                    <p class="text-2xl font-bold text-gray-900">4.2 días</p>
+                                    <p class="text-xs text-orange-600 flex items-center mt-1">
+                                        ⚡ -1.3 días vs objetivo
+                                    </p>
+                                </div>
+                                <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                                    <span class="text-2xl">⏱️</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Eficiencia IA -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-purple-500">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-600">Precisión IA</p>
+                                    <p class="text-2xl font-bold text-gray-900">92.4%</p>
+                                    <p class="text-xs text-purple-600 flex items-center mt-1">
+                                        🎯 Excelente
+                                    </p>
+                                </div>
+                                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                                    <span class="text-2xl">🤖</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sección principal con gráficos -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                        <!-- Inventario Actual (mejorado) -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-semibold text-gray-800">Estado del Inventario</h3>
+                                <button class="text-blue-600 hover:text-blue-800 text-sm">Ver detalles</button>
+                            </div>
+                            <div class="flex items-center justify-center mb-4">
+                                <div class="relative w-32 h-32">
+                                    <svg class="w-32 h-32 transform -rotate-90">
+                                        <circle cx="64" cy="64" r="56" stroke="#e5e7eb" stroke-width="8" fill="none"/>
+                                        <circle cx="64" cy="64" r="56" stroke="#10b981" stroke-width="8" fill="none" 
+                                                stroke-dasharray="351.86" stroke-dashoffset="87.97" stroke-linecap="round"/>
+                                    </svg>
+                                    <div class="absolute inset-0 flex items-center justify-center flex-col">
+                                        <span class="text-2xl font-bold text-gray-800">75%</span>
+                                        <span class="text-xs text-gray-500">Ocupación</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Total productos:</span>
+                                    <span class="font-semibold">8,450</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Ubicaciones:</span>
+                                    <span class="font-semibold">156</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Capacidad máxima:</span>
+                                    <span class="font-semibold">11,200</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Predicción de Demanda (mejorado) -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-semibold text-gray-800">Tendencia de Demanda</h3>
+                                <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">↗️ +12%</span>
+                            </div>
+                            <svg class="w-full h-24 mb-4" viewBox="0 0 300 100">
+                                <defs>
+                                    <linearGradient id="demandGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.3" />
+                                        <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0" />
+                                    </linearGradient>
+                                </defs>
+                                <polygon fill="url(#demandGradient)" points="20,100 20,80 60,60 100,45 140,35 180,40 220,25 260,20 260,100"/>
+                                <polyline class="chart-line" fill="none" stroke="#3b82f6" stroke-width="3" 
+                                         points="20,80 60,60 100,45 140,35 180,40 220,25 260,20"/>
+                                <circle cx="260" cy="20" r="4" fill="#3b82f6" class="pulse-dot"/>
+                            </svg>
+                            <div class="grid grid-cols-2 gap-4 text-sm">
+                                <div>
+                                    <p class="text-gray-600">Esta semana</p>
+                                    <p class="font-semibold text-blue-600">1,240 unidades</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-600">Próxima semana</p>
+                                    <p class="font-semibold text-green-600">1,390 unidades</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Alertas Activas (mejorado) -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-semibold text-gray-800">Centro de Alertas</h3>
+                                <button onclick="showScreen('alerts')" class="text-blue-600 hover:text-blue-800 text-sm">Ver todas</button>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between p-3 bg-red-50 rounded-lg">
+                                    <div class="flex items-center">
+                                        <div class="w-3 h-3 bg-red-500 rounded-full mr-3"></div>
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-800">Críticas</p>
+                                            <p class="text-xs text-gray-600">Stock bajo</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-lg font-bold text-red-600">3</span>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-yellow-50 rounded-lg">
+                                    <div class="flex items-center">
+                                        <div class="w-3 h-3 bg-yellow-500 rounded-full mr-3"></div>
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-800">Advertencias</p>
+                                            <p class="text-xs text-gray-600">Revisar pronto</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-lg font-bold text-yellow-600">7</span>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+                                    <div class="flex items-center">
+                                        <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-800">Normales</p>
+                                            <p class="text-xs text-gray-600">Todo bien</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-lg font-bold text-green-600">142</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sección inferior con actividad reciente y acciones rápidas -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Actividad Reciente -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-semibold text-gray-800">Actividad Reciente</h3>
+                                <span class="text-xs text-gray-500">Últimas 2 horas</span>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
+                                    <div class="flex-1">
+                                        <p class="text-sm text-gray-800">Entrada de inventario: 50 Laptops Dell XPS 13</p>
+                                        <p class="text-xs text-gray-500">Hace 15 minutos • Ubicación A-1-3</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                                    <div class="flex-1">
+                                        <p class="text-sm text-gray-800">Predicción actualizada: Mouse Logitech MX</p>
+                                        <p class="text-xs text-gray-500">Hace 32 minutos • Demanda ↗️ +8%</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-2 h-2 bg-orange-500 rounded-full mt-2"></div>
+                                    <div class="flex-1">
+                                        <p class="text-sm text-gray-800">Orden de compra generada automáticamente</p>
+                                        <p class="text-xs text-gray-500">Hace 1 hora • Teclados mecánicos</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-2 h-2 bg-red-500 rounded-full mt-2"></div>
+                                    <div class="flex-1">
+                                        <p class="text-sm text-gray-800">Alerta: Stock crítico detectado</p>
+                                        <p class="text-xs text-gray-500">Hace 1.5 horas • Mouse Logitech MX</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Acciones Rápidas -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-4">Acciones Rápidas</h3>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button onclick="showScreen('products')" class="flex items-center justify-center p-4 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors">
+                                    <div class="text-center">
+                                        <span class="text-2xl mb-2 block">📦</span>
+                                        <span class="text-sm font-medium text-gray-700">Agregar Producto</span>
+                                    </div>
+                                </button>
+                                <button class="flex items-center justify-center p-4 bg-green-50 hover:bg-green-100 rounded-lg transition-colors">
+                                    <div class="text-center">
+                                        <span class="text-2xl mb-2 block">📋</span>
+                                        <span class="text-sm font-medium text-gray-700">Generar Orden</span>
+                                    </div>
+                                </button>
+                                <button onclick="showScreen('reports')" class="flex items-center justify-center p-4 bg-purple-50 hover:bg-purple-100 rounded-lg transition-colors">
+                                    <div class="text-center">
+                                        <span class="text-2xl mb-2 block">📊</span>
+                                        <span class="text-sm font-medium text-gray-700">Ver Reportes</span>
+                                    </div>
+                                </button>
+                                <button class="flex items-center justify-center p-4 bg-orange-50 hover:bg-orange-100 rounded-lg transition-colors">
+                                    <div class="text-center">
+                                        <span class="text-2xl mb-2 block">🔍</span>
+                                        <span class="text-sm font-medium text-gray-700">Auditoría</span>
+                                    </div>
+                                </button>
+                            </div>
+                            
+                            <!-- Recomendación de IA -->
+                            <div class="mt-6 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border border-blue-200">
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-2xl">🤖</span>
+                                    <div>
+                                        <h4 class="text-sm font-semibold text-gray-800 mb-1">Recomendación IA</h4>
+                                        <p class="text-xs text-gray-600">Considera reabastecer Mouse Logitech MX en los próximos 2 días para evitar desabastecimiento.</p>
+                                        <button class="text-xs text-blue-600 hover:text-blue-800 mt-2">Ver detalles →</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla 3: Gestión de Productos -->
+        <div id="products" class="screen bg-gray-50">
+            <div class="flex h-full">
+                <!-- Sidebar (reutilizado) -->
+                <div class="w-64 bg-white shadow-lg">
+                    <div class="p-6">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                                </svg>
+                            </div>
+                            <span class="ml-3 text-xl font-bold text-gray-800">Invopt</span>
+                        </div>
+                    </div>
+                    <nav class="mt-6">
+                        <a onclick="showScreen('dashboard')" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="mr-3">🏠</span>
+                            Dashboard
+                        </a>
+                        <a onclick="showScreen('products')" class="flex items-center px-6 py-3 text-blue-600 bg-blue-50 border-r-2 border-blue-600 cursor-pointer">
+                            <span class="mr-3">📦</span>
+                            Inventario
+                        </a>
+                        <a onclick="showScreen('predictions')" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="mr-3">📈</span>
+                            Predicciones
+                        </a>
+                        <a onclick="showScreen('alerts')" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="mr-3">🔔</span>
+                            Alertas
+                        </a>
+                        <a onclick="showScreen('reports')" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="mr-3">📊</span>
+                            Reportes
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Main Content -->
+                <div class="flex-1 p-8">
+                    <div class="mb-8">
+                        <h1 class="text-3xl font-bold text-gray-800">Gestión de Productos</h1>
+                        <p class="text-gray-600">Administra tu inventario</p>
+                    </div>
+
+                    <!-- Barra de búsqueda y botones -->
+                    <div class="flex justify-between items-center mb-6">
+                        <div class="relative flex-1 max-w-md">
+                            <input type="text" placeholder="🔍 Buscar producto..." 
+                                   class="w-full pl-4 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <button class="ml-4 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg flex items-center">
+                            ➕ Agregar Producto
+                        </button>
+                    </div>
+
+                    <!-- Tabla de productos -->
+                    <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                        <table class="w-full">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Código</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Producto</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Cantidad</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Stock Mínimo</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Ubicación</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold text-gray-600">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 text-sm text-gray-800">PRD001</td>
+                                    <td class="px-6 py-4 text-sm text-gray-800">Laptop Dell XPS 13</td>
+                                    <td class="px-6 py-4 text-sm text-gray-800">45</td>
+                                    <td class="px-6 py-4 text-sm text-gray-800">20</td>
+                                    <td class="px-6 py-4 text-sm text-gray-800">A-1-3</td>
+                                    <td class="px-6 py-4 text-sm">
+                                        <button class="text-blue-600 hover:text-blue-800 mr-3">✏️</button>
+                                        <button class="text-red-600 hover:text-red-800">🗑️</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-sm text-gray-800">PRD002</td>
+                                    <td class="px-6 py-4 text-sm text-gray-800">Mouse Logitech MX</td>
+                                    <td class="px-6 py-4 text-sm text-red-600 font-semibold">8</td>
+                                    <td class="px-6 py-4 text-sm text-gray-800">15</td>
+                                    <td class="px-6 py-4 text-sm text-gray-800">B-2-1</td>
+                                    <td class="px-6 py-4 text-sm">
+                                        <button class="text-blue-600 hover:text-blue-800 mr-3">✏️</button>
+                                        <button class="text-red-600 hover:text-red-800">🗑️</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-sm text-gray-800">PRD003</td>
+                                    <td class="px-6 py-4 text-sm text-gray-800">Monitor Samsung 27"</td>
+                                    <td class="px-6 py-4 text-sm text-gray-800">32</td>
+                                    <td class="px-6 py-4 text-sm text-gray-800">10</td>
+                                    <td class="px-6 py-4 text-sm text-gray-800">C-1-2</td>
+                                    <td class="px-6 py-4 text-sm">
+                                        <button class="text-blue-600 hover:text-blue-800 mr-3">✏️</button>
+                                        <button class="text-red-600 hover:text-red-800">🗑️</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla 4: Predicción de Demanda -->
+        <div id="predictions" class="screen bg-gray-50">
+            <div class="flex h-full">
+                <!-- Sidebar -->
+                <div class="w-64 bg-white shadow-lg">
+                    <div class="p-6">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                                </svg>
+                            </div>
+                            <span class="ml-3 text-xl font-bold text-gray-800">Invopt</span>
+                        </div>
+                    </div>
+                    <nav class="mt-6">
+                        <a onclick="showScreen('dashboard')" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="mr-3">🏠</span>
+                            Dashboard
+                        </a>
+                        <a onclick="showScreen('products')" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="mr-3">📦</span>
+                            Inventario
+                        </a>
+                        <a onclick="showScreen('predictions')" class="flex items-center px-6 py-3 text-blue-600 bg-blue-50 border-r-2 border-blue-600 cursor-pointer">
+                            <span class="mr-3">📈</span>
+                            Predicciones
+                        </a>
+                        <a onclick="showScreen('alerts')" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="mr-3">🔔</span>
+                            Alertas
+                        </a>
+                        <a onclick="showScreen('reports')" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="mr-3">📊</span>
+                            Reportes
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Main Content -->
+                <div class="flex-1 p-8">
+                    <div class="mb-8">
+                        <h1 class="text-3xl font-bold text-gray-800">Predicción de Demanda</h1>
+                        <p class="text-gray-600">Próximas semanas</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <!-- Gráfico principal -->
+                        <div class="lg:col-span-2 bg-white rounded-xl p-6 shadow-sm">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-6">Tendencia de Demanda - Laptop Dell XPS 13</h3>
+                            <svg class="w-full h-64" viewBox="0 0 600 200">
+                                <!-- Grid lines -->
+                                <defs>
+                                    <pattern id="grid" width="60" height="40" patternUnits="userSpaceOnUse">
+                                        <path d="M 60 0 L 0 0 0 40" fill="none" stroke="#f3f4f6" stroke-width="1"/>
+                                    </pattern>
+                                </defs>
+                                <rect width="600" height="200" fill="url(#grid)"/>
+                                
+                                <!-- Línea de predicción -->
+                                <polyline class="chart-line" fill="none" stroke="#3b82f6" stroke-width="3" 
+                                         points="50,150 110,130 170,120 230,100 290,90 350,85 410,75 470,70 530,65"/>
+                                
+                                <!-- Puntos de datos -->
+                                <circle cx="50" cy="150" r="4" fill="#3b82f6"/>
+                                <circle cx="110" cy="130" r="4" fill="#3b82f6"/>
+                                <circle cx="170" cy="120" r="4" fill="#3b82f6"/>
+                                <circle cx="230" cy="100" r="4" fill="#3b82f6"/>
+                                <circle cx="290" cy="90" r="4" fill="#10b981"/>
+                                <circle cx="350" cy="85" r="4" fill="#10b981"/>
+                                <circle cx="410" cy="75" r="4" fill="#10b981"/>
+                                <circle cx="470" cy="70" r="4" fill="#10b981"/>
+                                <circle cx="530" cy="65" r="4" fill="#10b981" class="pulse-dot"/>
+                                
+                                <!-- Labels -->
+                                <text x="50" y="190" text-anchor="middle" class="text-xs fill-gray-600">Sem 1</text>
+                                <text x="170" y="190" text-anchor="middle" class="text-xs fill-gray-600">Sem 3</text>
+                                <text x="290" y="190" text-anchor="middle" class="text-xs fill-gray-600">Sem 5</text>
+                                <text x="410" y="190" text-anchor="middle" class="text-xs fill-gray-600">Sem 7</text>
+                                <text x="530" y="190" text-anchor="middle" class="text-xs fill-gray-600">Sem 9</text>
+                            </svg>
+                        </div>
+
+                        <!-- Resumen de predicción -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-6">Resumen de Predicción</h3>
+                            <div class="space-y-4">
+                                <div class="p-4 bg-blue-50 rounded-lg">
+                                    <p class="text-sm text-gray-600">Demanda esperada</p>
+                                    <p class="text-2xl font-bold text-blue-600">1,200 unidades</p>
+                                </div>
+                                <div class="p-4 bg-yellow-50 rounded-lg">
+                                    <p class="text-sm text-gray-600">Probabilidad de escasez</p>
+                                    <p class="text-2xl font-bold text-yellow-600">15%</p>
+                                </div>
+                                <div class="p-4 bg-green-50 rounded-lg">
+                                    <p class="text-sm text-gray-600">Sugerencia</p>
+                                    <p class="text-sm font-semibold text-green-600">Reordenar en 5 días</p>
+                                </div>
+                            </div>
+                            <button class="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-lg">
+                                Ver Recomendaciones Detalladas
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla 5: Alertas -->
+        <div id="alerts" class="screen bg-gray-50">
+            <div class="flex h-full">
+                <!-- Sidebar -->
+                <div class="w-64 bg-white shadow-lg">
+                    <div class="p-6">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                                </svg>
+                            </div>
+                            <span class="ml-3 text-xl font-bold text-gray-800">Invopt</span>
+                        </div>
+                    </div>
+                    <nav class="mt-6">
+                        <a onclick="showScreen('dashboard')" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="mr-3">🏠</span>
+                            Dashboard
+                        </a>
+                        <a onclick="showScreen('products')" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="mr-3">📦</span>
+                            Inventario
+                        </a>
+                        <a onclick="showScreen('predictions')" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="mr-3">📈</span>
+                            Predicciones
+                        </a>
+                        <a onclick="showScreen('alerts')" class="flex items-center px-6 py-3 text-blue-600 bg-blue-50 border-r-2 border-blue-600 cursor-pointer">
+                            <span class="mr-3">🔔</span>
+                            Alertas
+                        </a>
+                        <a onclick="showScreen('reports')" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="mr-3">📊</span>
+                            Reportes
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Main Content -->
+                <div class="flex-1 p-8">
+                    <div class="mb-8">
+                        <h1 class="text-3xl font-bold text-gray-800">Alertas y Notificaciones</h1>
+                        <p class="text-gray-600">Monitorea el estado de tu inventario</p>
+                    </div>
+
+                    <!-- Filtros -->
+                    <div class="mb-6 flex space-x-4">
+                        <button class="px-4 py-2 bg-red-100 text-red-700 rounded-lg font-medium">🔴 Críticas (3)</button>
+                        <button class="px-4 py-2 bg-yellow-100 text-yellow-700 rounded-lg font-medium">🟡 Advertencias (7)</button>
+                        <button class="px-4 py-2 bg-green-100 text-green-700 rounded-lg font-medium">🟢 Normales (142)</button>
+                    </div>
+
+                    <!-- Lista de alertas -->
+                    <div class="space-y-4">
+                        <!-- Alerta crítica -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-red-500">
+                            <div class="flex items-start justify-between">
+                                <div class="flex items-start">
+                                    <div class="w-3 h-3 bg-red-500 rounded-full mt-2 mr-4"></div>
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-gray-800">Stock crítico - Mouse Logitech MX</h3>
+                                        <p class="text-gray-600 mt-1">Solo quedan 8 unidades. Stock mínimo: 15</p>
+                                        <p class="text-sm text-gray-500 mt-2">Hace 2 horas</p>
+                                    </div>
+                                </div>
+                                <button class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-sm">
+                                    Marcar como revisada
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Alerta de advertencia -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-yellow-500">
+                            <div class="flex items-start justify-between">
+                                <div class="flex items-start">
+                                    <div class="w-3 h-3 bg-yellow-500 rounded-full mt-2 mr-4"></div>
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-gray-800">Exceso de inventario - Teclado Mecánico</h3>
+                                        <p class="text-gray-600 mt-1">185 unidades disponibles. Rotación lenta detectada</p>
+                                        <p class="text-sm text-gray-500 mt-2">Hace 4 horas</p>
+                                    </div>
+                                </div>
+                                <button class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-sm">
+                                    Marcar como revisada
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Alerta normal -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-green-500">
+                            <div class="flex items-start justify-between">
+                                <div class="flex items-start">
+                                    <div class="w-3 h-3 bg-green-500 rounded-full mt-2 mr-4"></div>
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-gray-800">Predicción estable - Laptop Dell XPS 13</h3>
+                                        <p class="text-gray-600 mt-1">Niveles óptimos. Próximo reabastecimiento en 2 semanas</p>
+                                        <p class="text-sm text-gray-500 mt-2">Hace 1 día</p>
+                                    </div>
+                                </div>
+                                <button class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-sm">
+                                    Marcar como revisada
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla 6: Reportes -->
+        <div id="reports" class="screen bg-gray-50">
+            <div class="flex h-full">
+                <!-- Sidebar -->
+                <div class="w-64 bg-white shadow-lg">
+                    <div class="p-6">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                                </svg>
+                            </div>
+                            <span class="ml-3 text-xl font-bold text-gray-800">Invopt</span>
+                        </div>
+                    </div>
+                    <nav class="mt-6">
+                        <a onclick="showScreen('dashboard')" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="mr-3">🏠</span>
+                            Dashboard
+                        </a>
+                        <a onclick="showScreen('products')" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="mr-3">📦</span>
+                            Inventario
+                        </a>
+                        <a onclick="showScreen('predictions')" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="mr-3">📈</span>
+                            Predicciones
+                        </a>
+                        <a onclick="showScreen('alerts')" class="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="mr-3">🔔</span>
+                            Alertas
+                        </a>
+                        <a onclick="showScreen('reports')" class="flex items-center px-6 py-3 text-blue-600 bg-blue-50 border-r-2 border-blue-600 cursor-pointer">
+                            <span class="mr-3">📊</span>
+                            Reportes
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Main Content -->
+                <div class="flex-1 p-8">
+                    <div class="mb-8">
+                        <h1 class="text-3xl font-bold text-gray-800">Reportes de Desempeño</h1>
+                        <p class="text-gray-600">Análisis del rendimiento del sistema</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                        <!-- Ahorro mensual -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-semibold text-gray-800">Ahorro Mensual</h3>
+                                <span class="text-2xl">💰</span>
+                            </div>
+                            <div class="text-3xl font-bold text-green-600 mb-2">$24,500</div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-500 h-2 rounded-full" style="width: 85%"></div>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-2">85% del objetivo mensual</p>
+                        </div>
+
+                        <!-- Reducción de errores -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-semibold text-gray-800">Reducción de Errores</h3>
+                                <span class="text-2xl">📉</span>
+                            </div>
+                            <div class="text-3xl font-bold text-blue-600 mb-2">67%</div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-blue-500 h-2 rounded-full" style="width: 67%"></div>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-2">Comparado con el mes anterior</p>
+                        </div>
+
+                        <!-- Eficiencia del modelo -->
+                        <div class="bg-white rounded-xl p-6 shadow-sm">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-semibold text-gray-800">Eficiencia del Modelo</h3>
+                                <span class="text-2xl">🎯</span>
+                            </div>
+                            <div class="text-3xl font-bold text-purple-600 mb-2">92%</div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-purple-500 h-2 rounded-full" style="width: 92%"></div>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-2">Precisión de predicciones</p>
+                        </div>
+                    </div>
+
+                    <!-- Gráfico de tendencias -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm mb-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-6">Tendencia de Ahorros - Últimos 6 meses</h3>
+                        <svg class="w-full h-48" viewBox="0 0 600 150">
+                            <!-- Barras -->
+                            <rect x="50" y="100" width="60" height="30" fill="#3b82f6" rx="4"/>
+                            <rect x="130" y="85" width="60" height="45" fill="#3b82f6" rx="4"/>
+                            <rect x="210" y="70" width="60" height="60" fill="#3b82f6" rx="4"/>
+                            <rect x="290" y="55" width="60" height="75" fill="#3b82f6" rx="4"/>
+                            <rect x="370" y="40" width="60" height="90" fill="#3b82f6" rx="4"/>
+                            <rect x="450" y="25" width="60" height="105" fill="#10b981" rx="4"/>
+                            
+                            <!-- Labels -->
+                            <text x="80" y="145" text-anchor="middle" class="text-xs fill-gray-600">Ene</text>
+                            <text x="160" y="145" text-anchor="middle" class="text-xs fill-gray-600">Feb</text>
+                            <text x="240" y="145" text-anchor="middle" class="text-xs fill-gray-600">Mar</text>
+                            <text x="320" y="145" text-anchor="middle" class="text-xs fill-gray-600">Abr</text>
+                            <text x="400" y="145" text-anchor="middle" class="text-xs fill-gray-600">May</text>
+                            <text x="480" y="145" text-anchor="middle" class="text-xs fill-gray-600">Jun</text>
+                        </svg>
+                    </div>
+
+                    <!-- Botón de descarga -->
+                    <div class="text-center">
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold">
+                            📄 Descargar Informe PDF
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+       
+       
+    </body>
+</html>
