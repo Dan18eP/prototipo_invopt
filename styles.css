@@ -191,3 +191,12 @@ body {
         justify-content: flex-start !important;
     }
 }
+
+div[class*="bg-"] > .icon-emoji {
+  font-size: 2rem !important;
+  line-height: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+

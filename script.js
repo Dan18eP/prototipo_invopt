@@ -189,3 +189,166 @@ function submitSupportForm() {
     document.getElementById('supportForm').reset();
 }
  
+// --- SISTEMA DE SIDEBAR RESPONSIVE POR PANTALLA ---
+
+function toggleSidebar() {
+  // Detecta la pantalla activa
+  const activeScreen = document.querySelector(".screen.active");
+  if (!activeScreen) return;
+
+  const sidebar = activeScreen.querySelector("#sidebar");
+  const menuToggle = activeScreen.querySelector("#menu-toggle");
+
+  if (!sidebar || !menuToggle) return;
+
+  // Alterna visibilidad del sidebar
+  sidebar.classList.toggle("-translate-x-full");
+
+  // Cambia el ícono del botón
+  if (sidebar.classList.contains("-translate-x-full")) {
+    menuToggle.textContent = "☰";
+    menuToggle.setAttribute("aria-label", "Abrir menú");
+  } else {
+    menuToggle.textContent = "✖️";
+    menuToggle.setAttribute("aria-label", "Cerrar menú");
+  }
+}
+
+// Detecta clic en botón del menú solo dentro de la pantalla activa
+function initResponsiveSidebar(screenId) {
+  const screen = document.getElementById(screenId);
+  if (!screen) return;
+
+  const menuToggle = screen.querySelector("#menu-toggle");
+  if (menuToggle) {
+    menuToggle.onclick = toggleSidebar;
+  }
+}
+
+// --- Integración con tu sistema de pantallas ---
+
+// Guarda referencia original
+const originalShowScreen = window.showScreen;
+
+// Redefine showScreen con integración responsive
+window.showScreen = function (screenId) {
+  originalShowScreen(screenId);
+
+  // Inicializa el botón de menú solo en la pantalla visible
+  setTimeout(() => initResponsiveSidebar(screenId), 100);
+};
+
+// --- Cierra el sidebar si se hace clic fuera (solo en móvil) ---
+document.addEventListener("click", (event) => {
+  const activeScreen = document.querySelector(".screen.active");
+  if (!activeScreen) return;
+
+  const sidebar = activeScreen.querySelector("#sidebar");
+  const menuToggle = activeScreen.querySelector("#menu-toggle");
+
+  if (
+    sidebar &&
+    menuToggle &&
+    !sidebar.contains(event.target) &&
+    !menuToggle.contains(event.target) &&
+    window.innerWidth < 768 &&
+    !sidebar.classList.contains("-translate-x-full")
+  ) {
+    sidebar.classList.add("-translate-x-full");
+    menuToggle.textContent = "☰";
+    menuToggle.setAttribute("aria-label", "Abrir menú");
+  }
+});
+
+function initAgenteInvopt() {
+  // Crear contenedor principal
+  const aiAgent = document.createElement("div");
+  aiAgent.id = "ai-agent";
+  aiAgent.className = "fixed bottom-6 right-6 z-50";
+  aiAgent.innerHTML = `
+    <!-- Botón -->
+    <button
+      id="toggle-chat"
+      class="w-14 h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg flex items-center justify-center text-2xl transition-transform duration-300 hover:scale-110"
+      aria-label="Abrir chat"
+    >
+      🤖
+    </button>
+
+    <!-- Ventana del chat -->
+    <div
+      id="chat-window"
+      class="hidden flex flex-col bg-white shadow-2xl rounded-2xl w-80 h-96 absolute bottom-16 right-0 border border-gray-200 overflow-hidden"
+    >
+      <div class="bg-blue-600 text-white p-3 font-semibold flex justify-between items-center">
+        <span>Agente Invopt</span>
+        <button id="close-chat" class="text-white text-lg">&times;</button>
+      </div>
+      <div id="chat-body" class="flex-1 p-3 overflow-y-auto text-sm space-y-2">
+        <div class="bg-blue-100 text-gray-800 p-2 rounded-lg w-fit">
+          👋 ¡Hola! Soy el Agente Invopt. ¿En qué puedo ayudarte?
+        </div>
+      </div>
+      <div class="p-3 border-t flex gap-2">
+        <input
+          id="chat-input"
+          type="text"
+          placeholder="Escribe tu mensaje..."
+          class="flex-1 border rounded-lg p-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <button
+          id="send-chat"
+          class="bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700"
+        >
+          ➤
+        </button>
+      </div>
+    </div>
+  `;
+
+  // Insertar en el body
+  document.body.appendChild(aiAgent);
+
+  // Referencias
+  const toggleBtn = aiAgent.querySelector("#toggle-chat");
+  const chatWindow = aiAgent.querySelector("#chat-window");
+  const closeBtn = aiAgent.querySelector("#close-chat");
+  const sendBtn = aiAgent.querySelector("#send-chat");
+  const input = aiAgent.querySelector("#chat-input");
+  const chatBody = aiAgent.querySelector("#chat-body");
+
+  // Eventos
+  toggleBtn.addEventListener("click", () => {
+    chatWindow.classList.toggle("hidden");
+  });
+
+  closeBtn.addEventListener("click", () => {
+    chatWindow.classList.add("hidden");
+  });
+
+  sendBtn.addEventListener("click", sendMessage);
+  input.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") sendMessage();
+  });
+
+  function sendMessage() {
+    const text = input.value.trim();
+    if (!text) return;
+
+    const userMsg = document.createElement("div");
+    userMsg.className = "bg-gray-100 text-gray-800 p-2 rounded-lg w-fit self-end ml-auto";
+    userMsg.textContent = text;
+    chatBody.appendChild(userMsg);
+    input.value = "";
+
+    setTimeout(() => {
+      const aiMsg = document.createElement("div");
+      aiMsg.className = "bg-blue-100 text-gray-800 p-2 rounded-lg w-fit";
+      aiMsg.textContent = "Estoy procesando tu solicitud...";
+      chatBody.appendChild(aiMsg);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }, 500);
+
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+}

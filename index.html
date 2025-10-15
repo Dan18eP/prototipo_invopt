@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invopt - Gestión Inteligente de Inventario</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
@@ -307,7 +308,7 @@
                     <div class="border-t border-gray-800 pt-6">
                         <div class="flex flex-col md:flex-row justify-between items-center">
                             <p class="text-gray-400 text-sm mb-4 md:mb-0">
-                                © 2024 Invopt. Todos los derechos reservados.
+                                © 2025 Invopt. Todos los derechos reservados.
                             </p>
                             <div class="flex space-x-6">
                                 <a href="#" class="text-gray-400 hover:text-white transition-colors">
@@ -332,66 +333,88 @@
             </footer>
         </div>
 
-        <!-- Pantalla 2: Dashboard Mejorado -->
+        <!-- Pantalla 2: Dashboard -->
         <div id="dashboard" class="screen bg-gray-50">
             <div class="flex h-full">
+
+                <!-- Botón hamburguesa visible solo en móviles -->
+                <button 
+                  id="menu-toggle"
+                  class="md:hidden fixed top-4 left-4 z-50 bg-transparent text-blue-600 p-2 rounded-lg transition-transform duration-300"
+                  aria-label="Abrir menú"
+                >
+                  ☰
+                </button>
                 <!-- Sidebar -->
-                <div class="w-64 bg-white shadow-lg">
-                    <div class="p-6">
-                        <div class="flex items-center">
+                <aside 
+                    id="sidebar"
+                    class="sidebar fixed md:static top-0 left-0 h-full bg-white shadow-lg 
+                            transform -translate-x-full md:translate-x-0 transition-transform duration-300 
+                            w-16 md:w-20 hover:w-64 group overflow-hidden z-40"
+                    >
+                        <!-- Contenedor del logo -->
+                        <div class="p-6 group flex items-center transition-all duration-300">
+                        <!-- Logo -->
                             <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
                                 <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z" />
                                 </svg>
                             </div>
-                            <span class="ml-3 text-xl font-bold text-gray-800">Invopt</span>
+
+                        <!-- Texto que aparece al pasar el cursor -->
+                            <span
+                                class="ml-3 text-xl font-bold text-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap"
+                            >
+                                Invopt
+                            </span>
                         </div>
-                    </div>
-                    <nav class="group mt-6 bg-white shadow-md h-screen transition-all duration-300 w-16 hover:w-56 overflow-hidden">
-                        <a onclick="showScreen('dashboard')" class="flex items-center px-4 py-3 text-blue-600 bg-blue-50 border-r-2 border-blue-600 cursor-pointer">
-                        <span class="text-lg">🏠</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Dashboard
-                        </span>
-                        </a>
- 
-                        <a onclick="showScreen('products')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">📦</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Inventario
-                        </span>
-                        </a>
- 
-                        <a onclick="showScreen('predictions')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">📈</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Predicciones
-                        </span>
-                        </a>
- 
-                        <a onclick="showScreen('alerts')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">🔔</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Alertas
-                        </span>
-                        </a>
- 
-                        <a onclick="showScreen('reports')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">📊</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Reportes
-                        </span>
-                        </a>
- 
-                        <a onclick="showScreen('support')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">🛠️</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Soporte
-                        </span>
-                        </a>
- 
-                    </nav>
-                </div>
+
+                        <nav class="group mt-6 bg-white shadow-md h-screen transition-all duration-300 w-16 hover:w-56 overflow-hidden">
+                            <a onclick="showScreen('dashboard')" class="flex items-center px-4 py-3 text-blue-600 bg-blue-50 border-r-2 border-blue-600 cursor-pointer">
+                            <span class="text-lg">🏠</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Dashboard
+                            </span>
+                            </a>
+    
+                            <a onclick="showScreen('products')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">📦</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Inventario
+                            </span>
+                            </a>
+    
+                            <a onclick="showScreen('predictions')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">📈</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Predicciones
+                            </span>
+                            </a>
+    
+                            <a onclick="showScreen('alerts')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">🔔</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Alertas
+                            </span>
+                            </a>
+    
+                            <a onclick="showScreen('reports')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">📊</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Reportes
+                            </span>
+                            </a>
+    
+                            <a onclick="showScreen('support')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">🛠️</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Soporte
+                            </span>
+                            </a>
+    
+                        </nav>
+                    
+                </aside>
 
                 <!-- Main Content -->
                 <div class="flex-1 p-8">
@@ -430,7 +453,7 @@
                                     </p>
                                 </div>
                                 <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                                    <span class="text-2xl">💎</span>
+                                    <span class="icon-emoji">💎</span>
                                 </div>
                             </div>
                         </div>
@@ -446,7 +469,7 @@
                                     </p>
                                 </div>
                                 <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                                    <span class="text-2xl">🔄</span>
+                                    <span class="icon-emoji">🔄</span>
                                 </div>
                             </div>
                         </div>
@@ -462,7 +485,7 @@
                                     </p>
                                 </div>
                                 <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                                    <span class="text-2xl">⏱️</span>
+                                    <span class="icon-emoji">⏱️</span>
                                 </div>
                             </div>
                         </div>
@@ -478,7 +501,7 @@
                                     </p>
                                 </div>
                                 <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                                    <span class="text-2xl">🤖</span>
+                                    <span class="icon-emoji">🤖</span>
                                 </div>
                             </div>
                         </div>
@@ -486,7 +509,7 @@
 
                     <!-- Sección principal con gráficos -->
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-                        <!-- Inventario Actual (mejorado) -->
+                        <!-- Inventario Actual  -->
                         <div class="bg-white rounded-xl p-6 shadow-sm">
                             <div class="flex items-center justify-between mb-4">
                                 <h3 class="text-lg font-semibold text-gray-800">Estado del Inventario</h3>
@@ -682,63 +705,85 @@
         <!-- Pantalla 3: Gestión de Productos -->
         <div id="products" class="screen bg-gray-50">
             <div class="flex h-full">
-                <!-- Sidebar (reutilizado) -->
-                <div class="w-64 bg-white shadow-lg">
-                    <div class="p-6">
-                        <div class="flex items-center">
+                <!-- Sidebar -->
+                                <!-- Botón hamburguesa visible solo en móviles -->
+                <button 
+                  id="menu-toggle"
+                  class="md:hidden fixed top-4 left-4 z-50 bg-transparent text-blue-600 p-2 rounded-lg transition-transform duration-300"
+                  aria-label="Abrir menú"
+                >
+                  ☰
+                </button>
+                <!-- Sidebar -->
+                <aside 
+                    id="sidebar"
+                    class="sidebar fixed md:static top-0 left-0 h-full bg-white shadow-lg 
+                            transform -translate-x-full md:translate-x-0 transition-transform duration-300 
+                            w-16 md:w-20 hover:w-64 group overflow-hidden z-40"
+                    >
+                        <!-- Contenedor del logo -->
+                        <div class="p-6 group flex items-center transition-all duration-300">
+                        <!-- Logo -->
                             <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
                                 <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z" />
                                 </svg>
                             </div>
-                            <span class="ml-3 text-xl font-bold text-gray-800">Invopt</span>
+
+                        <!-- Texto que aparece al pasar el cursor -->
+                            <span
+                                class="ml-3 text-xl font-bold text-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap"
+                            >
+                                Invopt
+                            </span>
                         </div>
-                    </div>
-                    <nav class="group mt-6 bg-white shadow-md h-screen transition-all duration-300 w-16 hover:w-56 overflow-hidden">
-                        <a onclick="showScreen('dashboard')" class="flex items-center px-4 py-3 text-blue-600 bg-blue-50 border-r-2 border-blue-600 cursor-pointer">
-                        <span class="text-lg">🏠</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Dashboard
-                        </span>
-                        </a>
- 
-                        <a onclick="showScreen('products')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">📦</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Inventario
-                        </span>
-                        </a>
- 
-                        <a onclick="showScreen('predictions')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">📈</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Predicciones
-                        </span>
-                        </a>
- 
-                        <a onclick="showScreen('alerts')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">🔔</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Alertas
-                        </span>
-                        </a>
- 
-                        <a onclick="showScreen('reports')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">📊</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Reportes
-                        </span>
-                        </a>
- 
-                        <a onclick="showScreen('support')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">🛠️</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Soporte
-                        </span>
-                        </a>
- 
-                    </nav>
-                </div>
+
+                        <nav class="group mt-6 bg-white shadow-md h-screen transition-all duration-300 w-16 hover:w-56 overflow-hidden">
+                            <a onclick="showScreen('dashboard')" class="flex items-center px-4 py-3 text-blue-600 bg-blue-50 border-r-2 border-blue-600 cursor-pointer">
+                            <span class="text-lg">🏠</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Dashboard
+                            </span>
+                            </a>
+    
+                            <a onclick="showScreen('products')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">📦</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Inventario
+                            </span>
+                            </a>
+    
+                            <a onclick="showScreen('predictions')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">📈</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Predicciones
+                            </span>
+                            </a>
+    
+                            <a onclick="showScreen('alerts')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">🔔</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Alertas
+                            </span>
+                            </a>
+    
+                            <a onclick="showScreen('reports')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">📊</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Reportes
+                            </span>
+                            </a>
+    
+                            <a onclick="showScreen('support')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">🛠️</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Soporte
+                            </span>
+                            </a>
+    
+                        </nav>
+                </aside>
+                
 
                 <!-- Main Content -->
                 <div class="flex-1 p-8">
@@ -816,62 +861,81 @@
         <div id="predictions" class="screen bg-gray-50">
             <div class="flex h-full">
                 <!-- Sidebar -->
-                <div id="sidebar" class="sidebar w-16 lg:w-64 bg-white shadow-lg transition-all duration-300 ease-in-out overflow-hidden">
-                    <div class="p-6">
-                        <div class="flex items-center justify-center lg:justify-start">
+                <button 
+                  id="menu-toggle"
+                  class="md:hidden fixed top-4 left-4 z-50 bg-transparent text-blue-600 p-2 rounded-lg transition-transform duration-300"
+                  aria-label="Abrir menú"
+                >
+                  ☰
+                </button>
+                <!-- Sidebar -->
+                <aside 
+                    id="sidebar"
+                    class="sidebar fixed md:static top-0 left-0 h-full bg-white shadow-lg 
+                            transform -translate-x-full md:translate-x-0 transition-transform duration-300 
+                            w-16 md:w-20 hover:w-64 group overflow-hidden z-40"
+                    >
+                        <!-- Contenedor del logo -->
+                        <div class="p-6 group flex items-center transition-all duration-300">
+                        <!-- Logo -->
                             <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
                                 <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z" />
                                 </svg>
                             </div>
-                            <span id="logo-text" class="ml-3 text-xl font-bold text-gray-800 hidden lg:block whitespace-nowrap">Invopt</span>
+
+                        <!-- Texto que aparece al pasar el cursor -->
+                            <span
+                                class="ml-3 text-xl font-bold text-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap"
+                            >
+                                Invopt
+                            </span>
                         </div>
-                    </div>
-                    <nav class="group mt-6 bg-white shadow-md h-screen transition-all duration-300 w-16 hover:w-56 overflow-hidden">
-                        <a onclick="showScreen('dashboard')" class="flex items-center px-4 py-3 text-blue-600 bg-blue-50 border-r-2 border-blue-600 cursor-pointer">
-                        <span class="text-lg">🏠</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Dashboard
-                        </span>
-                        </a>
- 
-                        <a onclick="showScreen('products')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">📦</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Inventario
-                        </span>
-                        </a>
- 
-                        <a onclick="showScreen('predictions')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">📈</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Predicciones
-                        </span>
-                        </a>
- 
-                        <a onclick="showScreen('alerts')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">🔔</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Alertas
-                        </span>
-                        </a>
- 
-                        <a onclick="showScreen('reports')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">📊</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Reportes
-                        </span>
-                        </a>
- 
-                        <a onclick="showScreen('support')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">🛠️</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Soporte
-                        </span>
-                        </a>
- 
-                    </nav>
-                </div>
+                        <nav class="group mt-6 bg-white shadow-md h-screen transition-all duration-300 w-16 hover:w-56 overflow-hidden">
+                            <a onclick="showScreen('dashboard')" class="flex items-center px-4 py-3 text-blue-600 bg-blue-50 border-r-2 border-blue-600 cursor-pointer">
+                            <span class="text-lg">🏠</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Dashboard
+                            </span>
+                            </a>
+    
+                            <a onclick="showScreen('products')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">📦</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Inventario
+                            </span>
+                            </a>
+    
+                            <a onclick="showScreen('predictions')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">📈</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Predicciones
+                            </span>
+                            </a>
+    
+                            <a onclick="showScreen('alerts')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">🔔</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Alertas
+                            </span>
+                            </a>
+    
+                            <a onclick="showScreen('reports')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">📊</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Reportes
+                            </span>
+                            </a>
+    
+                            <a onclick="showScreen('support')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">🛠️</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Soporte
+                            </span>
+                            </a>
+    
+                        </nav>
+                </aside>
 
                 
 
@@ -949,62 +1013,81 @@
         <div id="alerts" class="screen bg-gray-50">
             <div class="flex h-full">
                 <!-- Sidebar -->
-                <div class="w-64 bg-white shadow-lg">
-                    <div class="p-6">
-                        <div class="flex items-center">
+                <button 
+                  id="menu-toggle"
+                  class="md:hidden fixed top-4 left-4 z-50 bg-transparent text-blue-600 p-2 rounded-lg transition-transform duration-300"
+                  aria-label="Abrir menú"
+                >
+                  ☰
+                </button>
+                <!-- Sidebar -->
+                <aside 
+                    id="sidebar"
+                    class="sidebar fixed md:static top-0 left-0 h-full bg-white shadow-lg 
+                            transform -translate-x-full md:translate-x-0 transition-transform duration-300 
+                            w-16 md:w-20 hover:w-64 group overflow-hidden z-40"
+                    >
+                        <!-- Contenedor del logo -->
+                        <div class="p-6 group flex items-center transition-all duration-300">
+                        <!-- Logo -->
                             <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
                                 <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z" />
                                 </svg>
                             </div>
-                            <span class="ml-3 text-xl font-bold text-gray-800">Invopt</span>
+
+                        <!-- Texto que aparece al pasar el cursor -->
+                            <span
+                                class="ml-3 text-xl font-bold text-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap"
+                            >
+                                Invopt
+                            </span>
                         </div>
-                    </div>
-                    <nav class="group mt-6 bg-white shadow-md h-screen transition-all duration-300 w-16 hover:w-56 overflow-hidden">
-                        <a onclick="showScreen('dashboard')" class="flex items-center px-4 py-3 text-blue-600 bg-blue-50 border-r-2 border-blue-600 cursor-pointer">
-                        <span class="text-lg">🏠</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Dashboard
-                        </span>
-                        </a>
- 
-                        <a onclick="showScreen('products')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">📦</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Inventario
-                        </span>
-                        </a>
- 
-                        <a onclick="showScreen('predictions')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">📈</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Predicciones
-                        </span>
-                        </a>
- 
-                        <a onclick="showScreen('alerts')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">🔔</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Alertas
-                        </span>
-                        </a>
- 
-                        <a onclick="showScreen('reports')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">📊</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Reportes
-                        </span>
-                        </a>
- 
-                        <a onclick="showScreen('support')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">🛠️</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Soporte
-                        </span>
-                        </a>
- 
-                    </nav>
-                </div>
+                        <nav class="group mt-6 bg-white shadow-md h-screen transition-all duration-300 w-16 hover:w-56 overflow-hidden">
+                            <a onclick="showScreen('dashboard')" class="flex items-center px-4 py-3 text-blue-600 bg-blue-50 border-r-2 border-blue-600 cursor-pointer">
+                            <span class="text-lg">🏠</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Dashboard
+                            </span>
+                            </a>
+    
+                            <a onclick="showScreen('products')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">📦</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Inventario
+                            </span>
+                            </a>
+    
+                            <a onclick="showScreen('predictions')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">📈</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Predicciones
+                            </span>
+                            </a>
+    
+                            <a onclick="showScreen('alerts')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">🔔</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Alertas
+                            </span>
+                            </a>
+    
+                            <a onclick="showScreen('reports')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">📊</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Reportes
+                            </span>
+                            </a>
+    
+                            <a onclick="showScreen('support')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">🛠️</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Soporte
+                            </span>
+                            </a>
+    
+                        </nav>
+                    </aside>
 
                 <!-- Main Content -->
                 <div class="flex-1 p-8">
@@ -1081,62 +1164,82 @@
         <div id="reports" class="screen bg-gray-50">
             <div class="flex h-full">
                 <!-- Sidebar -->
-                <div class="w-64 bg-white shadow-lg">
-                    <div class="p-6">
-                        <div class="flex items-center justify-center lg:justify-start">
+                <button 
+                  id="menu-toggle"
+                  class="md:hidden fixed top-4 left-4 z-50 bg-transparent text-blue-600 p-2 rounded-lg transition-transform duration-300"
+                  aria-label="Abrir menú"
+                >
+                  ☰
+                </button>
+                <!-- Sidebar -->
+                    <aside 
+                        id="sidebar"
+                        class="sidebar fixed md:static top-0 left-0 h-full bg-white shadow-lg 
+                                transform -translate-x-full md:translate-x-0 transition-transform duration-300 
+                                w-16 md:w-20 hover:w-64 group overflow-hidden z-40"
+                        >
+                        <!-- Contenedor del logo -->
+                        <div class="p-6 group flex items-center transition-all duration-300">
+                        <!-- Logo -->
                             <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
                                 <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z" />
                                 </svg>
                             </div>
-                        <span id="logo-text-reports" class="ml-3 text-xl font-bold text-gray-800 hidden lg:block whitespace-nowrap opacity-0 sidebar-expanded:opacity-100 transition-all duration-300 transform -translate-x-2 sidebar-expanded:translate-x-0">Invopt</span>
-                    </div>
-                </div>
-                    <nav class="group mt-6 bg-white shadow-md h-screen transition-all duration-300 w-16 hover:w-56 overflow-hidden">
-                        <a onclick="showScreen('dashboard')" class="flex items-center px-4 py-3 text-blue-600 bg-blue-50 border-r-2 border-blue-600 cursor-pointer">
-                        <span class="text-lg">🏠</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Dashboard
-                        </span>
-                        </a>
- 
-                        <a onclick="showScreen('products')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">📦</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Inventario
-                        </span>
-                        </a>
- 
-                        <a onclick="showScreen('predictions')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">📈</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Predicciones
-                        </span>
-                        </a>
- 
-                        <a onclick="showScreen('alerts')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">🔔</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Alertas
-                        </span>
-                        </a>
- 
-                        <a onclick="showScreen('reports')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">📊</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Reportes
-                        </span>
-                        </a>
- 
-                        <a onclick="showScreen('support')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">🛠️</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                            Soporte
-                        </span>
-                        </a>
- 
-                    </nav>
-                </div>
+
+                        <!-- Texto que aparece al pasar el cursor -->
+                            <span
+                                class="ml-3 text-xl font-bold text-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap"
+                            >
+                                Invopt
+                            </span>
+                        </div>
+                    
+                        <nav class="group mt-6 bg-white shadow-md h-screen transition-all duration-300 w-16 hover:w-56 overflow-hidden">
+                            <a onclick="showScreen('dashboard')" class="flex items-center px-4 py-3 text-blue-600 bg-blue-50 border-r-2 border-blue-600 cursor-pointer">
+                            <span class="text-lg">🏠</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Dashboard
+                            </span>
+                            </a>
+    
+                            <a onclick="showScreen('products')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">📦</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Inventario
+                            </span>
+                            </a>
+    
+                            <a onclick="showScreen('predictions')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">📈</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Predicciones
+                            </span>
+                            </a>
+    
+                            <a onclick="showScreen('alerts')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">🔔</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Alertas
+                            </span>
+                            </a>
+    
+                            <a onclick="showScreen('reports')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">📊</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Reportes
+                            </span>
+                            </a>
+    
+                            <a onclick="showScreen('support')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">🛠️</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                                Soporte
+                            </span>
+                            </a>
+    
+                        </nav>
+                    </aside>
 
                 <!-- Main Content -->
                 <div class="flex-1 p-8">
@@ -1222,50 +1325,63 @@
     <div id="support" class="screen bg-gray-50">
         <div class="flex h-full">
             <!-- Sidebar -->
-            <div class="w-64 bg-white shadow-lg">
-                <div class="p-6">
-                    <div class="flex items-center">
-                        <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
-                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
-                            </svg>
+            <button 
+                  id="menu-toggle"
+                  class="md:hidden fixed top-4 left-4 z-50 bg-transparent text-blue-600 p-2 rounded-lg transition-transform duration-300"
+                  aria-label="Abrir menú"
+                >
+                  ☰
+                </button>
+                <!-- Sidebar -->
+                <aside 
+                    id="sidebar"
+                    class="sidebar fixed md:static top-0 left-0 h-full bg-white shadow-lg 
+                            transform -translate-x-full md:translate-x-0 transition-transform duration-300 
+                            w-16 md:w-20 hover:w-64 group overflow-hidden z-40"
+                    >
+                    <div class="p-6">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                                </svg>
+                            </div>
+                            <span class="ml-3 text-xl font-bold text-gray-800">Invopt</span>
                         </div>
-                        <span class="ml-3 text-xl font-bold text-gray-800">Invopt</span>
                     </div>
-                </div>
- 
-                <nav class="group mt-6 bg-white shadow-md h-screen transition-all duration-300 w-16 hover:w-56 overflow-hidden">
-                    <a onclick="showScreen('dashboard')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">🏠</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Dashboard</span>
-                    </a>
- 
-                    <a onclick="showScreen('products')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">📦</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Inventario</span>
-                    </a>
- 
-                    <a onclick="showScreen('predictions')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">📈</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Predicciones</span>
-                    </a>
- 
-                    <a onclick="showScreen('alerts')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">🔔</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Alertas</span>
-                    </a>
- 
-                    <a onclick="showScreen('reports')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
-                        <span class="text-lg">📊</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Reportes</span>
-                    </a>
- 
-                    <a onclick="showScreen('support')" class="flex items-center px-4 py-3 text-blue-600 bg-blue-50 border-r-2 border-blue-600 cursor-pointer">
-                        <span class="text-lg">🛠️</span>
-                        <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Soporte</span>
-                    </a>
-                </nav>
-            </div>
+    
+                    <nav class="group mt-6 bg-white shadow-md h-screen transition-all duration-300 w-16 hover:w-56 overflow-hidden">
+                        <a onclick="showScreen('dashboard')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">🏠</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Dashboard</span>
+                        </a>
+    
+                        <a onclick="showScreen('products')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">📦</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Inventario</span>
+                        </a>
+    
+                        <a onclick="showScreen('predictions')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">📈</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Predicciones</span>
+                        </a>
+    
+                        <a onclick="showScreen('alerts')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">🔔</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Alertas</span>
+                        </a>
+    
+                        <a onclick="showScreen('reports')" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 cursor-pointer">
+                            <span class="text-lg">📊</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Reportes</span>
+                        </a>
+    
+                        <a onclick="showScreen('support')" class="flex items-center px-4 py-3 text-blue-600 bg-blue-50 border-r-2 border-blue-600 cursor-pointer">
+                            <span class="text-lg">🛠️</span>
+                            <span class="ml-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Soporte</span>
+                        </a>
+                    </nav>
+                </aside>
  
             <!-- Main Content -->
             <div class="flex-1 p-8">
@@ -1325,6 +1441,56 @@
             </div>
         </div>
     </div>
+
+    <!-- Botón flotante del Agente Invopt -->
+    <div id="ai-agent" class="fixed bottom-6 right-6 z-50">
+    <!-- Botón -->
+        <button
+            id="toggle-chat"
+            class="w-14 h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg flex items-center justify-center text-2xl transition-transform duration-300 hover:scale-110"
+            aria-label="Abrir chat"
+        >
+            🤖
+        </button>
+
+        <!-- Ventana del chat -->
+        <div
+            id="chat-window"
+            class="hidden flex flex-col bg-white shadow-2xl rounded-2xl w-80 h-96 absolute bottom-16 right-0 border border-gray-200 overflow-hidden"
+        >
+            <div class="bg-blue-600 text-white p-3 font-semibold flex justify-between items-center">
+                <span>Agente Invopt</span>
+                <button id="close-chat" class="text-white text-lg">&times;</button>
+            </div>
+            <div id="chat-body" class="flex-1 p-3 overflow-y-auto text-sm space-y-2">
+                <div class="bg-blue-100 text-gray-800 p-2 rounded-lg w-fit">
+                    👋 ¡Hola! Soy el Agente Invopt. ¿En qué puedo ayudarte?
+                </div>
+            </div>
+            <div class="p-3 border-t flex gap-2">
+                <input
+                    id="chat-input"
+                    type="text"
+                    placeholder="Escribe tu mensaje..."
+                    class="flex-1 border rounded-lg p-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <button
+                    id="send-chat"
+                    class="bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700"
+                >
+                    ➤
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+    // Inicializar el chat del Agente Invopt cuando cargue la página
+    document.addEventListener("DOMContentLoaded", () => {
+        initAgenteInvopt();
+    });
+    </script>
 
     <script src="script.js"></script>
        
